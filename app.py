@@ -6,7 +6,6 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from email.message import EmailMessage
-
 load_dotenv()
 
 dropbox_key = os.getenv('DROPBOX_KEY')
@@ -106,13 +105,13 @@ with st.form('submit'):
             msg["From"] = sender_email
             msg["Subject"] = "ProClub Art Contest Confirmation"
             msg["To"] = email
-            msg.set_content("Thank you for your submission to the ProClub Art Contest! We will be in touch with you soon with the results of the contest. Good luck! :tada:")
+            msg.set_content(f"Thank you for your submission to the ProClub Art Contest! We will be in touch with you soon with the results of the contest. Good luck! :tada:\n\n{info}")
 
 
             for f in files:
                 f_bytes = f.read()
                 dbx.files_upload(f_bytes, f'/{name}/{f.name}')
-                msg.add_attachment(f_bytes, filename=f.name)
+                msg.add_attachment(f_bytes, maintype='application', subtype='octet-stream', filename=f.name)
             with smtplib.SMTP('smtp.gmail.com', 587) as s:
                 s.starttls()
                 s.login(sender_email, password)
