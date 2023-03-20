@@ -19,14 +19,14 @@ audio_demo_bytes = audio_demo_file.read()
 st.set_page_config(
         page_title="Programming Club's Art Contest",
 )
-st.header('Programming Club\'s Art Contest!')
-st.subheader('Due April 4th')
+st.header('Programming Club\'s Art Contest!:art:')
+st.subheader('Due April 4th:calendar:')
 st.write(
     'It\'s time for the Programming Club\'s Art Contest! We\'re looking for the best art made with code. The contest is open to all students, and the winners will recieve small prizes. Scroll to the bottom of the page to submit your project for the contest!')
 
 st.markdown("""---""")
 
-st.subheader('Prizes')
+st.subheader('Prizes:trophy:')
 
 award1, award2, award3 = st.columns(3)
 with award1:
@@ -70,7 +70,7 @@ st.caption('A frighteningly realistic simulation of a piece of cloth')
 st.video('https://www.youtube.com/watch?v=KpJzoFzDDMw')
 
 st.markdown("""---""")
-st.subheader('Rules')
+st.subheader('Rules:page_with_curl:')
 rule1, rule2, rul3 = st.columns(3)
 with rule1:
     st.write('1. All submissions must be original work')
@@ -79,14 +79,14 @@ with rule2:
 with rul3:
     st.write('3. All submissions must be made with code')
 with st.form('submit'):
-    st.subheader('Enter the contest!')
+    st.subheader('Enter the contest!:partying_face:')
     name = st.text_input('Enter your full name')
     email = st.text_input('Enter your email')
     files = st.file_uploader('Upload your art (any format works, code, images, videos, etc.)', accept_multiple_files=True, )
     description = st.text_area('Enter a description of your art and how it was made')
     submitted = st.form_submit_button('Submit!')
     if submitted:
-        st.write('Thank you for entering the contest! Good luck!')
+        st.write('Thank you for entering the contest! Good luck!:tada:')
         info = f'Name: {name}\nEmail: {email}\nDescription: {description}'
         dbx.files_upload(info.encode(), f'/{name}/info.txt')
         for f in files:
