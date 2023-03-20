@@ -2,6 +2,7 @@ import os
 
 import dropbox
 import streamlit as st
+from PIL import Image
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,7 +16,12 @@ demo_bytes = demo_file.read()
 
 audio_demo_file = open('res/jukebox_audo_sample.mp3', 'rb')
 audio_demo_bytes = audio_demo_file.read()
+logo = Image.open('res/hhs_logo.png')
 
+st.set_page_config(
+        page_title="Programming Club's Art Contest",
+        page_icon=logo,
+)
 st.header('Programming Club\'s Art Contest!')
 st.subheader('Due April 4th')
 st.write(
