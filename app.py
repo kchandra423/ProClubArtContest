@@ -19,7 +19,7 @@ audio_demo_bytes = audio_demo_file.read()
 st.header('Programming Club\'s Art Contest!')
 st.subheader('Due April 4th')
 st.write(
-    'It\'s time for the Programming Club\'s Art Contest! We\'re looking for the best art made with code. The contest is open to all students, and the winner will receive a $50 Amazon gift card. The deadline is April 4th, and the winner will be announced on April 5th. To enter, submit your art to the #art channel on our Discord server. For more information, check out the #art channel on our Discord server. Good luck!')
+    'It\'s time for the Programming Club\'s Art Contest! We\'re looking for the best art made with code. The contest is open to all students, and the winners will recieve small prizes. Scroll to the bottom of the page to submit your project for the contest!')
 
 st.markdown("""---""")
 
@@ -86,7 +86,6 @@ with st.form('submit'):
         dbx.files_upload(info.encode(), f'/{name}/info.txt')
         for f in files:
             dbx.files_upload(f.read(), f'/{name}/{f.name}')
-        st.cache_data.clear()
 
 
 
