@@ -105,7 +105,7 @@ with st.form('submit'):
             msg["From"] = sender_email
             msg["Subject"] = "ProClub Art Contest Confirmation"
             msg["To"] = email
-            msg.set_content(f"Thank you for your submission to the ProClub Art Contest! We will be in touch with you soon with the results of the contest. Good luck! :tada:\n\n{info}")
+            msg.set_content(f"Thank you for your submission to the ProClub Art Contest! We will be in touch with you soon with the results of the contest. Good luck!\n\n{info}")
 
 
             for f in files:
