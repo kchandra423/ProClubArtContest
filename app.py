@@ -85,7 +85,6 @@ with rule2:
 with rul3:
     st.write('3. All submissions must be made with code')
 
-st.markdown("""---""")
 
 with st.form('submit', clear_on_submit=True):
     st.subheader('Enter the contest!:partying_face:')
