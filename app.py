@@ -66,6 +66,8 @@ with col2:
              'I find joy in every code I write,\n'
              'My passion for coding a sublime delight.\n\n'
              'The joy of programming, I will never tire,\nMy love for coding with me, I inspire')
+st.caption('A frighteningly realistic simulation of a piece of cloth')
+st.video('https://www.youtube.com/watch?v=KpJzoFzDDMw')
 
 st.markdown("""---""")
 st.subheader('Rules')
