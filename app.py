@@ -1,14 +1,14 @@
 import os
 
-import requests
+import dropbox
 import streamlit as st
 from dotenv import load_dotenv
-import dropbox
 
 load_dotenv()
 
 dropbox_key = os.getenv('DROPBOX_KEY')
 dbx = dropbox.Dropbox(dropbox_key)
+
 
 demo_file = open('res/coding_art_demo.mp4', 'rb')
 demo_bytes = demo_file.read()
@@ -73,22 +73,20 @@ with rule2:
     st.write('2. All submissions must be school appropriate')
 with rul3:
     st.write('3. All submissions must be made with code')
-with st.form():
+with st.form('submit'):
     st.subheader('Enter the contest!')
-    name = st.text_input('Enter your name')
+    name = st.text_input('Enter your full name')
     email = st.text_input('Enter your email')
     st.write('By entering the contest, you agree to the rules')
-    file = st.file_uploader('Upload your art (any format works, code, images, videos, etc.)', accept_multiple_files=True)
+    files = st.file_uploader('Upload your art (any format works, code, images, videos, etc.)\nMax file(s) size is 20 MB', accept_multiple_files=True, )
     description = st.text_area('Enter a description of your art')
     submitted = st.form_submit_button('Submit')
     if submitted:
         st.write('Thank you for entering the contest! Good luck!')
+        info = f'Name: {name}\nEmail: {email}\nDescription: {description}'
+        dbx.files_upload(info.encode(), f'/{name}/info.txt')
+        for f in files:
+            dbx.files_upload(f.read(), f'/{name}/{f.name}')
 
 
-        def newer():
-            url = 'https://USERNAME:PASSWORD@www.googleapis.com/upload/drive/v3/files?uploadType=media'
-            data = '''{{
-              "name":"testing.txt",
-            }}'''
-            response = requests.post(url, data=data, key = auth_key)
-            print(response.text)
+
