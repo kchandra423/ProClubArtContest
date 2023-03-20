@@ -78,7 +78,7 @@ with st.form('submit'):
     name = st.text_input('Enter your full name')
     email = st.text_input('Enter your email')
     st.write('By entering the contest, you agree to the rules')
-    files = st.file_uploader('Upload your art (any format works, code, images, videos, etc.)\nMax file(s) size is 20 MB', accept_multiple_files=True, )
+    files = st.file_uploader('Upload your art (any format works, code, images, videos, etc.)', accept_multiple_files=True, )
     description = st.text_area('Enter a description of your art')
     submitted = st.form_submit_button('Submit')
     if submitted:
