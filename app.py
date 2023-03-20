@@ -20,7 +20,7 @@ logo = Image.open('res/hhs_logo.png')
 
 st.set_page_config(
         page_title="Programming Club's Art Contest",
-        page_icon=logo,
+        page_icon='res/hhs_logo.png',
 )
 st.header('Programming Club\'s Art Contest!')
 st.subheader('Due April 4th')
