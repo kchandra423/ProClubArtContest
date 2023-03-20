@@ -78,6 +78,9 @@ with rule2:
     st.write('2. All submissions must be school appropriate')
 with rul3:
     st.write('3. All submissions must be made with code')
+
+st.markdown("""---""")
+
 with st.form('submit'):
     st.subheader('Enter the contest!:partying_face:')
     name = st.text_input('Enter your full name')
