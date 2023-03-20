@@ -87,7 +87,7 @@ with rul3:
 
 st.markdown("""---""")
 
-with st.form('submit'):
+with st.form('submit', clear_on_submit=True):
     st.subheader('Enter the contest!:partying_face:')
     name = st.text_input('Enter your full name')
     email = st.text_input('Enter your email')
