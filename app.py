@@ -86,6 +86,7 @@ with st.form('submit'):
         dbx.files_upload(info.encode(), f'/{name}/info.txt')
         for f in files:
             dbx.files_upload(f.read(), f'/{name}/{f.name}')
+        st.cache_data.clear()
 
 
 
