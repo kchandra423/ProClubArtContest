@@ -1,13 +1,20 @@
 import os
+import smtplib
 
 import dropbox
 import streamlit as st
 from dotenv import load_dotenv
 
+from email.message import EmailMessage
+
 load_dotenv()
 
 dropbox_key = os.getenv('DROPBOX_KEY')
 dbx = dropbox.Dropbox(dropbox_key)
+
+
+sender_email = 'kumartrolling@gmail.com'
+password = os.getenv('EMAIL_PASSWORD')
 
 
 demo_file = open('res/coding_art_demo.mp4', 'rb')
@@ -95,8 +102,22 @@ with st.form('submit'):
             st.write('Thank you for entering the contest! Good luck!:tada:')
             info = f'Name: {name}\nEmail: {email}\nDescription: {description}'
             dbx.files_upload(info.encode(), f'/{name}/info.txt')
+            msg = EmailMessage()
+            msg["From"] = sender_email
+            msg["Subject"] = "ProClub Art Contest Confirmation"
+            msg["To"] = email
+            msg.set_content("Thank you for your submission to the ProClub Art Contest! We will be in touch with you soon with the results of the contest. Good luck! :tada:")
+
+
             for f in files:
-                dbx.files_upload(f.read(), f'/{name}/{f.name}')
+                f_bytes = f.read()
+                dbx.files_upload(f_bytes, f'/{name}/{f.name}')
+                msg.add_attachment(f_bytes, filename=f.name)
+            with smtplib.SMTP('smtp.gmail.com', 587) as s:
+                s.starttls()
+                s.login(sender_email, password)
+                s.send_message(msg)
+
 
 
 
