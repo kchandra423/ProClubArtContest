@@ -89,11 +89,14 @@ with st.form('submit'):
     description = st.text_area('Enter a description of your art and how it was made')
     submitted = st.form_submit_button('Submit!')
     if submitted:
-        st.write('Thank you for entering the contest! Good luck!:tada:')
-        info = f'Name: {name}\nEmail: {email}\nDescription: {description}'
-        dbx.files_upload(info.encode(), f'/{name}/info.txt')
-        for f in files:
-            dbx.files_upload(f.read(), f'/{name}/{f.name}')
+        if not name or not email or not files or not description:
+            st.error('Please fill out all fields')
+        else:
+            st.write('Thank you for entering the contest! Good luck!:tada:')
+            info = f'Name: {name}\nEmail: {email}\nDescription: {description}'
+            dbx.files_upload(info.encode(), f'/{name}/info.txt')
+            for f in files:
+                dbx.files_upload(f.read(), f'/{name}/{f.name}')
 
 
 
